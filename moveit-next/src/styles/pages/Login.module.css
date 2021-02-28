@@ -1,0 +1,22 @@
+.container {
+    height: 100vh;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    background: var(--blue);
+}
+
+.container section{
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18rem;
+    align-content: center;
+}
+
+.login {
+    margin-top: 4rem;
+}

@@ -1,62 +1,24 @@
-import { Profile } from '../components/Profile'
-import { ExperienceBar } from "../components/ExperienceBar";
-import { CompletedChallenges } from '../components/CompletedChallenges';
-import { Countdown } from '../components/Countdown';
-import { ChallengeBox } from '../components/ChallengeBox'
-
-import { GetServerSideProps } from 'next'
+import styles from '../styles/pages/Login.module.css'
 import Head from 'next/head'
+import { BoxLogin } from '../components/BoxLogin'
 
-import styles from '../styles/pages/Home.module.css'
-import { CountdownProvider } from '../contexts/CountdownContext';
-import { ChallengesProvider } from '../contexts/ChallengesContext';
-
-interface HomeProps{
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
-
-export default function Home(props: HomeProps) {
-  return (
-    <ChallengesProvider 
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >  
-      <div className={styles.container}>
-        <Head>
-          <title>Inicio | move.it</title>
-        </Head>
-
-        <ExperienceBar/>
-
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-      </div>
-    </ChallengesProvider>  
+export default function Login(){
+  return(
+    <div className={styles.container}>
+      <Head>
+        <title>Inicio | move.it</title>
+      </Head>
+  
+      <section>
+        <div>
+          <img src="icons/Simbolo.svg" alt="imagem NLW"/>
+        </div>
+        <div className={styles.login}>
+          <img src="icons/Logo.svg" alt="logo moveit"/>
+          <BoxLogin />
+        </div>
+      </section>
+      
+    </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies
-
-  return{
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
-    }
-  }
 }
