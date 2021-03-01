@@ -10,7 +10,7 @@ export default function Login(){
       </Head>
   
       <section>
-        <div>
+        <div className={styles.imagem}>
           <img src="icons/Simbolo.svg" alt="imagem NLW"/>
         </div>
         <div className={styles.login}>
